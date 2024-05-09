@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    {{ form(startChampionshipButton) }}
+    {{ form(simulateChampionshipTourButton) }}
+
+    {% if teams|default(null) %}
+    <h2>Regular Series</h2>
+    <h3>Division A</h3>
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Team</th>
+            <th>Points</th>
+        </tr>
+        {% set teamsA = teams|filter(team => team.division.value == 'A') %}
+        {% set sortedTeamsA = teamsA|sort((a, b) => b.points - a.points) %}
+        {% for team in sortedTeamsA %}
+            <tr>
+                <td>{{ team.name }}</td>
+                <td>{{ team.points }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Division B</h3>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Team</th>
+                <th>Points</th>
+            </tr>
+        {% set teamsB = teams|filter(team => team.division.value == 'B') %}
+        {% set sortedTeamsB = teamsB|sort((a, b) => b.points - a.points) %}
+        {% for team in sortedTeamsB %}
+            <tr>
+                <td>{{ team.name }}</td>
+                <td>{{ team.points }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}
+
+
