@@ -1,3 +1,11 @@
+Реализовано формирование таблицы результатов регулярного чемпионата.
+
+Для запуска приложения потребуется docker и docker-compose. Контейнеры собираются минут пять.
+
+После сборки контейнеров потребуется запустить миграцию.
+
+Таблица реализована на localhost/standings/
+
 # Docker Setup for Symfony 6.3.* Web Apps
 
 Docker containers for traditional Symfony 6.3.* web apps, i.e., apps that you would usually create using the `--webapp` Symfony CLI option or the `composer require webapp` command.
